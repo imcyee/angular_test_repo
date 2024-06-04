@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../models/tutorial.model';
+import { Task } from '../models/task.model';
 
-const baseUrl = 'http://localhost:8080/api/tutorials';
+const baseUrl = 'http://localhost:8080/tasks';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TutorialService {
+export class TaskService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(baseUrl);
+  getAll(): Observable<Task[]> {
+    return this.http.get<Task[]>(baseUrl);
   }
 
-  get(id: any): Observable<Tutorial> {
-    return this.http.get<Tutorial>(`${baseUrl}/${id}`);
+  get(id: any): Observable<Task> {
+    return this.http.get<Task>(`${baseUrl}/${id}`);
   }
 
   create(data: any): Observable<any> {
@@ -35,7 +35,7 @@ export class TutorialService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: any): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
+  findByTitle(title: any): Observable<Task[]> {
+    return this.http.get<Task[]>(`${baseUrl}?title=${title}`);
   }
 }
